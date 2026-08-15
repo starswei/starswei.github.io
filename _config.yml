@@ -1,8 +1,0 @@
-title: Stars Wei
-description: Stars Wei 的个人网站与开发记录
-url: "https://starswei.github.io"
-baseurl: ""
-
-lang: zh-CN
-markdown: kramdown
-theme: minima
