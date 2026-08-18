@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="从业务模型的定义出发，梳理业务建模、业务分析，以及 MRD、BRD、PRD、FRD 之间的关系。">
+    <meta name="color-scheme" content="light">
+    <title>业务模型 — Stars Wei</title>
+    <link rel="canonical" href="https://starswei.github.io/articles/business-model.html">
+    <link rel="stylesheet" href="../styles.css">
+    <script defer src="../script.js"></script>
+  </head>
+  <body class="article-page">
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="返回首页">
+        <span class="brand-mark">SW</span>
+        <span>Stars Wei</span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="../index.html#about">关于</a>
+        <a href="../index.html#projects">项目</a>
+        <a href="../index.html#writing">文章</a>
+        <a class="nav-cta" href="https://github.com/starswei">GitHub ↗</a>
+      </nav>
+    </header>
+
+    <main id="main" class="article-main">
+      <article class="article-shell">
+        <header class="article-header">
+          <p class="eyebrow">WRITING · BUSINESS ANALYSIS</p>
+          <h1>业务模型</h1>
+          <div class="article-meta">
+            <time datetime="2026-08-15">2026 年 8 月 15 日</time>
+            <span>随笔</span>
+            <a href="https://starswei.wordpress.com/2026/08/15/%e4%b8%9a%e5%8a%a1%e6%a8%a1%e5%9e%8b/">查看 WordPress 原文 ↗</a>
+          </div>
+        </header>
+
+        <details class="floating-toc">
+          <summary>目录</summary>
+          <nav class="floating-toc__panel" aria-label="文章目录">
+            <ol>
+              <li>
+                <a href="#business-model-definition">业务模型是什么？</a>
+                <ol>
+                  <li><a href="#reference-definition">参考定义</a></li>
+                  <li><a href="#summary-definition">归纳定义</a></li>
+                </ol>
+              </li>
+              <li>
+                <a href="#business-model-building">业务模型如何构建？</a>
+                <ol>
+                  <li><a href="#business-analysis">业务分析</a></li>
+                  <li><a href="#use-analysis">从具体到抽象的分析</a></li>
+                </ol>
+              </li>
+            </ol>
+          </nav>
+        </details>
+
+        <div class="article-content">
+          <h2 id="business-model-definition">1. 业务模型是什么？</h2>
+
+          <p>今天在准备开启第一个待办任务时，便遇到了问题。昨晚在做<strong>每日复盘</strong>时，AI为我在 Github Projects 里创建了 12 个明日待办项，其中放在第一位的竟然是——“PostgreSQL 持久化”。困惑随即而来，什么是“持久化”，要对谁持久化。经过与 AI 的讨论，大致搞懂了持久化是要做什么。但是新的问题又接踵而至——实现 PostgreSQL 持久化之前，要先明确业务模型，那“业务模型”又是什么呢？</p>
+
+          <h3 id="reference-definition">1.1. 参考定义</h3>
+
+          <p>业务模型是业务架构的一部分，它描述了业务的运行逻辑，而业务架构则更全面地描述了企业的业务组织和运行方式。业务模型通常包括业务流程、业务规则、业务角色等元素，它描述了业务的运行方式和业务之间的交互关系。<sup><a href="#footnote-1" id="footnote-1-ref">1</a></sup></p>
+
+          <p>业务模型是一种抽象表现，用来描述和解释组织或公司如何运作。它涵盖了组织的目标、策略、业务流程、组织结构、操作规则、信息流等。业务模型作为桥梁，连接了组织的战略目标与具体实现，它是理解和改进业务的关键工具。</p>
+
+          <p>业务模型的核心构成：</p>
+
+          <ol>
+            <li><strong>业务目标</strong>：明确组织的战略目标和追求的价值。</li>
+            <li><strong>业务流程</strong>：描述了组织如何创建价值，包括核心和支持流程。</li>
+            <li><strong>组织结构</strong>：展示了公司的部门、团队和职责分工。</li>
+            <li><strong>价值主张</strong>：组织提供给客户的独特价值和优势。</li>
+            <li><strong>客户关系</strong>：如何与客户互动和满足客户需求。</li>
+            <li><strong>合作伙伴</strong>：外部的合作关系和资源共享。</li>
+            <li><strong>收益结构</strong>：收入来源和盈利模式。<sup><a href="#footnote-2" id="footnote-2-ref">2</a></sup></li>
+          </ol>
+
+          <h3 id="summary-definition">1.2. 归纳定义</h3>
+
+          <p>在中文互联网上，关于“业务模型”的定义，众说风云。而在英文互联网上，则根本没有业务模型对应的词汇。用机器翻译的话，<em>Business Model</em> 就是“业务模型”，但仔细阅读 Wikipedia 的解释后，会发现 <em>Business Model</em> 实际上是“商业模型”的意思。</p>
+
+          <p>在互联网上搜索无果后，我与 AI 进行了新的一轮对话，终于得知 AI 口中的“业务模型”是指——业务领域模型（Domain Model）+ 业务流程模型（Business Process Model）+ 业务规则模型。</p>
+
+          <p>业务领域模型刻画的是业务的对象，以及对象之间的关系。业务流程模型刻画的是业务活动的先后顺序、参与角色、条件分支和结果。这两个概念在互联网上可以很容易检索到对应的词条，而“业务规则模型”这个概念则听起来很生僻，AI 在对话中也只给出了一个很简短的注解。所以，AI 对于“业务规则模型”这个词语的用法，我是存疑的。</p>
+
+          <p>不过眼下最关键的疑点，现在基本解决了，其他细节的确认眼下并不是什么要紧的事情。因此我决定把接下来的工作重心放在，业务建模上（Business Modeling）。（p.s. “业务建模”这个词倒是一个规范的表达，互联网上有丰富的语料，这一点让我对接下来的工作感到十分的安心。）</p>
+
+          <h2 id="business-model-building">2. 业务模型如何构建？</h2>
+
+          <p>了解了“业务模型”的大致含义后，也确认了业务建模的必要性。那么具体该如何进行业务建模呢？AI 给的答复是：</p>
+
+          <figure class="model-flow" aria-label="业务建模流程图">
+            <div class="model-flow__node"><span>01</span>业务目标</div>
+            <div class="model-flow__arrow" aria-hidden="true">↓</div>
+            <div class="model-flow__node"><span>02</span>业务领域模型</div>
+            <div class="model-flow__arrow" aria-hidden="true">↓</div>
+            <div class="model-flow__node"><span>03</span>业务规则</div>
+            <div class="model-flow__arrow" aria-hidden="true">↓</div>
+            <div class="model-flow__node"><span>04</span>业务流程模型</div>
+            <div class="model-flow__arrow" aria-hidden="true">↓</div>
+            <div class="model-flow__node"><span>05</span>数据模型</div>
+          </figure>
+
+          <p>按下葫芦浮起瓢，费了老大功夫大致理解什么是业务建模了，还没刚着手下一步行动，就又遇到了新的阻碍——“业务目标”是什么？“业务目标”如何确定？然后由“业务目标”又牵扯出“业务需求”、“业务场景”……</p>
+
+          <p>难道要“子又生孙，孙又生子。子又有子，子又有孙。子子孙孙无穷匮也”了吗？看来，我应当从源头上解决问题了。经过一番深究，终于得知——</p>
+
+          <p>业务目标、业务场景、业务流程、业务需求……都从属于业务分析（Businesses Analysis)，另外要注意业务分析与商业分析（Businesses Analytics）的区别。</p>
+
+          <h3 id="business-analysis">2.1. 业务分析（Business Analysis）</h3>
+
+          <p>说实话，虽然知道了 Business Analysis 与 Business Analytics 有区别，但是具体有怎样的区别，实在是难以琢磨，经过反复的查询与比对，大致可以绘制出如下的对比表：</p>
+
+          <figure class="table-scroll">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>维度</th>
+                  <th>业务分析（Business Analysis）</th>
+                  <th>商业 / 数据分析（Business Analytics）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>早上第一件事</td><td>看邮件，确认今天要访谈的业务方（如运营总监）时间，梳理访谈提纲。</td><td>打开数仓或 BI 看板，检查昨日核心指标（如 GMV、DAU）是否有异常波动。</td></tr>
+                <tr><td>核心工作场景</td><td>开需求评审会、画 Visio 流程图、写 PRD（产品需求文档）。</td><td>写 SQL / Hive 取数，在 Python / Jupyter 中运行分析模型，制作 Tableau / Power BI 仪表盘。</td></tr>
+                <tr><td>沟通对象</td><td>主要与业务方沟通，弄清其需求；再与研发、测试沟通，确保大家理解业务逻辑。</td><td>主要与数据库和数据工具打交道；也会向管理层、运营人员解释数据波动及其可能原因。</td></tr>
+                <tr><td>最头疼的事</td><td>业务方确认“就这样，不改了”，第二天又提出新的需求。</td><td>SQL 跑完发现空值、异常值很多，花大量时间清洗数据，真正建模反而很快。</td></tr>
+                <tr><td>典型交付物</td><td>PRD、业务流程图（To-Be）、功能清单、验收标准（AC）。</td><td>A/B 测试分析报告、用户流失预警名单、销量预测表、可视化仪表盘。</td></tr>
+                <tr><td>思维侧重点</td><td>强调逻辑闭环：将复杂业务规则，如退货审批，拆成完整、无遗漏的 If / Else 分支。</td><td>强调相关性、趋势与概率：不追求绝对精确，而是提供有置信度的判断，如“该客户流失概率为 87%”。</td></tr>
+              </tbody>
+            </table>
+            <figcaption class="table-caption">Business Analysis VS Business Analytics</figcaption>
+          </figure>
+
+          <p>反复浏览这张表后，不得不感慨：人只有通过具体的细节才能够准确的把握抽象的概念。</p>
+
+          <p>另外，通过表中具体的细节描述，之前在其他场景下获得的零散的知识，在此刻也一瞬间关联了起来。比如，BRD、MRD、FRD、PRD、OKR……</p>
+
+          <div class="docs-flow" aria-label="MRD、BRD、PRD、FRD 关系图">
+            <div class="docs-flow__node docs-flow__node--mrd"><strong>MRD</strong><small>Market Requirements Document</small><span>市场需求文档</span></div>
+            <div class="docs-flow__arrow" aria-hidden="true">→</div>
+            <div class="docs-flow__node docs-flow__node--brd"><strong>BRD</strong><small>Business Requirements Document</small><span>业务需求文档</span></div>
+            <div class="docs-flow__arrow" aria-hidden="true">→</div>
+            <div class="docs-flow__node docs-flow__node--prd"><strong>PRD</strong><small>Product Requirements Document</small><span>产品需求文档</span></div>
+            <div class="docs-flow__arrow" aria-hidden="true">→</div>
+            <div class="docs-flow__node docs-flow__node--frd"><strong>FRD</strong><small>Functional Requirements Document</small><span>功能需求文档</span></div>
+          </div>
+
+          <p>上面这张依赖关系图，或者说流程图，是我单从文档名称进行的一种组织，难免有点望文生义的嫌疑。然后，我本想通过阅读业内规范和范文，一来明确每份文档到底应该写什么，二来明确每个文档的定位和之间的关系。但是阅读了很多资料之后，我发现每个人和每个组织机构对这四篇文档的理解都不一样，并没有一个业内统一的规范。唯一能够确定的是，一篇文档由谁来撰写，以及由谁来阅读，决定了文档的内容。但是对于一个独立开发者来说，我是谁，我要写给谁看就是一个很大的问题。我无法去扮演一个想象中的，完全没有接触过的岗位角色，然后去承担其所在公司或单位的岗位职责，我必须要按照某种规范和模板才能够去学习如何撰写这四份文档。不过理清楚我的现实处境之后，也就不再去纠结所谓“专业”、“正确”和“规范”了，我只需要选择一套适合我的实际需求的规范即可，选择一套符合我的逻辑的规范即可。然而一套完整的，包含四份文档的规范，似乎是不存在的。至少目前对于我来说很难找到。看来只的靠自己的“望文生义”作为起点，结合实践，自己给自己制定一套规范了。当然这并不是闭门造车，而是以自己的实践为根基，有所取舍地结合各家所长。</p>
+
+          <h3 id="use-analysis">2.2. 从具体到抽象的分析</h3>
+
+          <p>经过仔细地思索，我突然意识到，我眼下真正需要的不是厘清四份需求文档的定义和规范，也不是选择某篇文档作为框架然后填充内容。这四份文档的根本目的是帮助各方参与者形成共识、记录共识的，所以首先应当确定的不是文档类型、文档模板，而是文档内容。并且不是完整内容，而是一个个具体的细节点。把一个个具体事项整理完成后，才需要考虑如何组织它们，最后才需要决定放入哪类文档中最合适。是用 MRD.md，还是用 BRD.md，亦或是 PRD.md，其实是最后一步才需要决定的事情。</p>
+
+          <p>所有经济活动的根本，都是需求-供给的辩证关系。基于此，我将市场需求文档置于业务/商业需求文档之前。而同样基于此，深挖市场需求，最核心的便是用户。所以，所谓“具体的细节”就应当从用户开始。</p>
+
+          <ol class="article-footnotes">
+            <li id="footnote-1"><a href="https://zhuanlan.zhihu.com/p/666277497">业务模型和业务架构的关系</a> <a href="#footnote-1-ref" aria-label="返回脚注 1 引用处">↩︎</a></li>
+            <li id="footnote-2"><a href="https://developer.cloud.tencent.com/article/2311809">业务模型：定义、构成与应用</a> <a href="#footnote-2-ref" aria-label="返回脚注 2 引用处">↩︎</a></li>
+          </ol>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <span>© <span id="year">2026</span> Stars Wei</span>
+      <a href="../index.html">返回首页</a>
+    </footer>
+  </body>
+</html>
